@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:200,400,500,600,700');
+
+body {
+  margin: 0;
+  font-family: "Roboto", BlinkMacSystemFont, -apple-system, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Arial", sans-serif;
+}
+
+a:active,
+a:hover,
+a:link,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.wrapper {
+  top: 78px;
+  position: absolute;
+}
+
+.header {
+  margin: 0;
+  position: relative;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 32px;
+  padding: 0 10px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  opacity: 0.7;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 150ms linear;
+}
+
+.button:hover {
+  background-color: #0001;
+  opacity: 1;
+}
+
+.toolbar {
+  margin: 0;
+  position: relative;
+  left: 0;
+  right: 0;
+  background-color: #3883fa;
+  border-bottom: 1px solid #2d72e0;
+}
+
+.toolbar hr {
+  border-width: 0;
+  border-left: 1px solid #fff9;
+  height: 66%;
+  width: 0;
+  margin: 0 5px;
+  color: transparent;
+}
+
+.menu {
+  display: flex;
+  margin: 0;
+  padding-left: 10px;
+  list-style: none;
+}
+
+.menu-item {
+  display: flex;
+  padding: 10px;
+  text-decoration: none;
+  user-select: none;
+  font-size: 14px;
+  color: #161616;
+  transition: background-color 120ms linear;
+}
+
+.menu-item:hover {
+  background-color: #edf4fe;
+}
+
+.dropdown {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  padding: 5px 0;
+  z-index: 10;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px;
+}
+
+.menu-item.active + .dropdown {
+  display: flex;
+}
+
+.dropdown > hr {
+  border-top: 1px solid #ddd;
+  height: 0;
+  width: 100%;
+  margin: 5px 0;
+  color: transparent;
+}
+
+.dropdown > li {
+  padding: 6px 12px 6px 8px;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  transition: background-color 120ms linear;
+}
+
+.dropdown.options > li {
+  padding-left: 24px;
+}
+
+.dropdown > li:hover {
+  background-color: #edf4fe;
+}
+
+.dropdown > li.active::after {
+  position: absolute;
+  margin: 2px 6px;
+  left: 0;
+  font: normal normal 12px/1 "Material Design Icons";
+  content: "\F012C";
+}
+
+.hotkey {
+  margin-left: 10px;
+  color: #666;
+  font-size: 12px;
+}
+
+.dialog {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog.active {
+  display: flex;
+}
+
+.dialog-card {
+  width: 360px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px;
+}
+
+.card-title {
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.card-title .button {
+  color: #161616;
+}
+
+.card-content {
+  font-size: 14px;
+  margin: 15px 0;
+}
+
+.card-content input:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.card-control {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 20px;
+}
+
+.paragraph {
+  display: block;
+  color: #161616;
+  margin-bottom: 10px;
+}
+
+.dialog-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #0005;
+}
+
+.tooltip {
+  position: absolute;
+  visibility: hidden;
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+}
+
+@media (hover:none) {
+  .tooltip {
+    transition-delay: 200ms;
+  }
+}
+
+.tooltip-text {
+  background-color: #2228;
+  border-radius: 0.25em;
+  color: #fff;
+  cursor: auto;
+  display: inline-flex;
+  flex: none;
+  justify-content: center;
+  margin-top: 0.7em;
+  backdrop-filter: blur(2px);
+  padding: 0.5em;
+  place-self: flex-end;
+  position: relative;
+}
+
+.tooltip-text::after {
+  border: solid transparent;
+  border-width: 0 0.5em 0.5em;
+  border-bottom-color: #2228;
+  backdrop-filter: blur(2px);
+  content: "";
+  position: absolute;
+  width: 0.1em;
+  height: 0;
+  top: 0;
+  transform: translateY(-100%);
+  transform-origin: left;
+}
+
+.mergely-column {
+  border: 1px solid #3883fa
+}

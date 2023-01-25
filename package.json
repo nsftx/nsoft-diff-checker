@@ -1,8 +1,8 @@
 {
-  "name": "mergely-webpack",
-  "version": "0.0.2",
-  "description": "Example Mergely project using webpack",
-  "main": "lib/index.js",
+  "name": "nsoft-diff-checker",
+  "version": "1.0.0",
+  "description": "Online diff checker",
+  "main": "dist/index.js",
   "keywords": [
     "mergely",
     "merge",
@@ -10,28 +10,28 @@
     "myers"
   ],
   "scripts": {
-    "build": "rm -rf lib && webpack",
-    "start": "webpack-dev-server -w --progress --colors --config ./webpack.config.js --content-base editor/ --inline --hot --host 0.0.0.0"
+    "build": "rm -rf dist && webpack"
   },
-  "author": {
-    "name": "Jamie Peabody",
-    "email": "jamie.peabody@gmail.com",
-    "url": "http://mergely.com"
-  },
-  "license": "ISC",
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
+  "license": "MPL 1.1",
+  "dependencies": {
     "codemirror": "^5.32.0",
-    "css-loader": "^0.28.7",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.5",
-    "html-loader": "^0.5.1",
-    "html-webpack-plugin": "^2.30.1",
     "jquery": "^3.2.1",
-    "mergely": "^4.0.0",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.5"
+    "mergely": "^4.3.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.3",
+    "eslint": "^8.32.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "file-loader": "^6.2.0",
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   }
 }

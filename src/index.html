@@ -1,14 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Mergely Example</title>
+  <title>NSoft Diff Checker</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Example webpack project for Mergely." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
 </head>
 <body>
-  <div class="mergely-full-screen-8">
+  <div class="header">
+    <ul class="menu">
+      <li>
+        <a class="menu-item">Left</a>
+        <ul class="dropdown">
+          <li id="undo-left">Undo<span class="hotkey">Ctrl + Z</span></li>
+          <li id="redo-left">Redo<span class="hotkey">Ctrl + Y</span></li>
+          <hr>
+          <li class="merge-change-right">Merge change right<span class="hotkey">Alt + --></span></li>
+          <li class="merge-all-right">Merge all right</li>
+          <hr>
+          <li id="clear-left">Clear</li>
+        </ul>
+      </li>
+      <li>
+        <a class="menu-item">Right</a>
+        <ul class="dropdown">
+          <li id="undo-right">Undo<span class="hotkey">Ctrl + Z</span></li>
+          <li id="redo-right">Redo<span class="hotkey">Ctrl + Y</span></li>
+          <hr>
+          <li class="merge-change-left">Merge change left<span class="hotkey">Alt + &lt;--</span></li>
+          <li class="merge-all-left">Merge all left</li>
+          <hr>
+          <li id="clear-right">Clear</li>
+        </ul>
+      </li>
+      <li>
+        <a class="menu-item">View</a>
+        <ul class="dropdown">
+          <li class="prev-change">Previous change<span class="hotkey">Alt + ↑</span></li>
+          <li class="next-change">Next change<span class="hotkey">Alt + ↓</span></li>
+        </ul>
+      </li>
+      <li>
+        <a class="menu-item">Options</a>
+        <ul class="dropdown options">
+          <li id="line-wrap">Line wrap</li>
+          <li class="active" id="line-numbers">Line numbers</li>
+          <hr>
+          <li id="ignore-case">Ignore case</li>
+          <li id="ignore-space">Ignore white space</li>
+          <li id="ignore-accents">Ignore accents</li>
+          <hr>
+          <li class="active" id="lcs">Longest Common Subsequence</li>
+          <li id="viewport">Viewport</li>
+          <hr>
+          <li class="active" id="auto-update">Auto-update</li>
+          <li id="update">Update diff</li>
+        </ul>
+      </li>
+      <li>
+        <a class="menu-item">About</a>
+        <ul class="dropdown">
+          <li><a href="https://github.com/nsftx/nsoft-diff-checker" target="_blank">GitHub <i class="mdi mdi-open-in-new"></i></a></li>
+          <li id="license">License</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="toolbar">
+    <div class="button-group">
+      <div class="button" id="upload">
+        <i class="mdi mdi-24px mdi-file-upload"></i>
+      </div>
+      <div class="button" id="download-diff">
+        <i class="mdi mdi-24px mdi-file-download"></i>
+      </div>
+      <hr role="separator" aria-orientation="vertical">
+      <div class="button next-change">
+        <i class="mdi mdi-24px mdi-chevron-down"></i>
+      </div>
+      <div class="button prev-change">
+        <i class="mdi mdi-24px mdi-chevron-up"></i>
+      </div>
+      <hr role="separator" aria-orientation="vertical">
+      <div class="button merge-change-left">
+        <i class="mdi mdi-24px mdi-chevron-left"></i>
+      </div>
+      <div class="button merge-change-right">
+        <i class="mdi mdi-24px mdi-chevron-right"></i>
+      </div>
+      <hr role="separator" aria-orientation="vertical">
+      <div class="button merge-all-left">
+        <i class="mdi mdi-24px mdi-chevron-triple-left"></i>
+      </div>
+      <div class="button merge-all-right">
+        <i class="mdi mdi-24px mdi-chevron-triple-right"></i>
+      </div>
+      <hr role="separator" aria-orientation="vertical">
+      <div class="button" id="swap-sides">
+        <i class="mdi mdi-24px mdi-swap-horizontal"></i>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper mergely-full-screen-8">
     <div class="mergely-resizer">
       <div id="mergely"></div>
     </div>
+  </div>
+  <div id="upload-dialog" class="dialog">
+    <div id="upload-dialog-overlay" class="dialog-overlay"></div>
+    <div class="dialog-card">
+      <div class="card-title">
+        <span>Load file</span>
+        <div class="button" id="close-upload-dialog">
+          <i class="mdi mdi-24px mdi-close"></i>
+        </div>
+      </div>
+      <div class="card-content">
+        <span class="paragraph">Load to left editor: </span>
+        <input id="upload-left" type="file">
+        <span class="paragraph">Load to right editor: </span>
+        <input id="upload-right" type="file">
+      </div>
+    </div>
+  </div>
+  <div id="license-dialog" class="dialog">
+    <div id="license-dialog-overlay" class="dialog-overlay"></div>
+    <div class="dialog-card">
+      <div class="card-title">
+        <span>License</span>
+        <div class="button" id="close-license-dialog">
+          <i class="mdi mdi-24px mdi-close"></i>
+        </div>
+      </div>
+      <div class="card-content">
+        <span class="paragraph">This software is a Combined Work using Mergely and is covered by the MPL 1.1 license.  For the full license, see <a href="https://mergely.com/license">https://mergely.com/license</a>.</span>
+      </div>
+    </div>
+  </div>
+  <div class="tooltip">
+    <div class="tooltip-text"></div>
   </div>
 </body>
 </html>

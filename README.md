@@ -1,25 +1,14 @@
-# mergely-webpack
+# NSoft diff checker
 
-This project can be used to start a new project using Mergely using [webpack](https://webpack.js.org/).  Clone this repository and then delete the `.git` folder.
+Client side online diff tool based on https://www.mergely.com/
 
 ## Installation
 
 ```
-git clone --depth=1 git@github.com:wickedest/mergely-webpack.git
-cd mergely-webpack
-rm -rf .git
 npm install
 ```
 
-## Running Mergely
-
-```
-npm start
-```
-
-Then, open a browser to http://localhost:8080/editor.
-
-## Creating a build
+## Build
 
 ```
 npm run build
