@@ -3,6 +3,7 @@
 body {
   margin: 0;
   font-family: "Roboto", BlinkMacSystemFont, -apple-system, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Arial", sans-serif;
+  background-color: #fff;
 }
 
 a:active,
